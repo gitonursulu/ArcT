@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: arct
+  name: userapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userapi-template
+  template:
+    metadata:
+      labels:
+        app: userapi-template
+    spec:
+      containers:
+      - name: userapi
+        image: userapi:local
+        ports:
+        - containerPort: 80
+ 

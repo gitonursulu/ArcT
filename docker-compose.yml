@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  s_jenkins:
+    container_name: c_jenkins
+    image: jenkinsdocker:local
+    user: root
+    ports:
+      - 8080:8080
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576
+    volumes:
+      - /opt/app_data/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  gateway-api:
+    build:
+      context: ./GatewayService
+      dockerfile: Dockerfile
+    ports:
+      - "7000:8080"
+
+  order-api:
+    build:
+      context: ./OrderService
+      dockerfile: Dockerfile
+    ports:
+      - "7001:8080"
+
+  user-api:
+    build:
+      context: ./UserService
+      dockerfile: Dockerfile
+    ports:
+      - "7002:8080"

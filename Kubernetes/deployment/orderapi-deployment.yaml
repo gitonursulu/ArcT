@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: arct
+  name: orderapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderapi-template
+  template:
+    metadata:
+      labels:
+        app: orderapi-template
+    spec:
+      containers:
+      - name: orderapi
+        image: orderapi:local
+        ports:
+        - containerPort: 80
+ 

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: arct
+  name: gatewayapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gatewayapi-template
+  template:
+    metadata:
+      labels:
+        app: gatewayapi-template
+    spec:
+      containers:
+      - name: gatewayapi
+        image: gatewayapi:local
+        ports:
+        - containerPort: 80
+ 
