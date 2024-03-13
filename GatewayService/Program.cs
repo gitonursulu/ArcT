@@ -24,8 +24,8 @@ if (app.Environment.IsDevelopment())
 
 app.Use(async (context, next) =>
 {
-    Console.WriteLine("Ýstek geldi.");
-    Debug.WriteLine("Ýstek geldi.");
+    Console.WriteLine("Ýstek geldi. bana girdi");
+    Debug.WriteLine("Ýstek geldi. bana girdi");
     await next();
 });
 
